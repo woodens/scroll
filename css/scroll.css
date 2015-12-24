@@ -1,0 +1,87 @@
+/* v2 */
+.g-banner {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+}
+.g-banner .banner-anchor {
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    width: 80px;
+    height: 100px;
+    overflow: hidden;
+    opacity: 0;
+    text-indent: -90em;
+    background-image: url(../img/banner_sprite.png);
+    background-repeat: no-repeat;
+    transition: transform .6s, opacity .6s;
+}
+.g-banner .prev {
+    left: 0;
+    transform: translateX(-100%);
+    background-position: 0 -41px;
+}
+.g-banner .prev:hover,
+.g-banner .next:hover {
+    opacity: 1;
+}
+.g-banner .prev:hover {
+    background-position: -81px -41px;
+}
+.g-banner .next {
+    right: 0;
+    transform: translateX(100%);
+    background-position: 0 -142px;
+}
+.g-banner .next:hover {
+    background-position: -81px -142px;
+}
+.g-banner:hover .banner-anchor {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+}
+.g-banner .banner-slide {
+    position: absolute;
+    display: none;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-position: center 0;
+}
+.g-banner .click-help {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.g-banner .banner-dots{
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.g-banner .banner-dots span{
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  background-color: #e3daef;
+  transition: transform .2s;
+  cursor: pointer;
+}
+.g-banner .banner-dots span:hover{
+  transform: scale(1.1);
+}
+.g-banner .banner-dots span.active{
+  background-color: #fff;
+  transform: scale(1.1);
+}
