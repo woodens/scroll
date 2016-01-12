@@ -35,16 +35,20 @@ function initScrollParams(){
     scrollPage.dotTpl = '<span></span>';
     scrollPage.dots = scrollPage.dotContainer.find('span');
     scrollPage.banner.find('.banner-anchor').removeAttr('style');
-    nextScroll();
     if(scrollPage.total == 1){
-        autoPlayScroll();
-        $('.banner-anchor').remove();   
+        //只有一张图删除样式上一张下一张图标
+        $('.banner-anchor').remove(); 
     }else{
+        //多张图下方添加表示位置的节点
         $.each(scrollPage.slides, function(i, el){
             scrollPage.dotContainer.append(scrollPage.dotTpl);
         });
+        //将节点放入scrollPage中
+        scrollPage.dots = scrollPage.dotContainer.find('span');
+        autoPlayScroll();
     }
-
+    //显示第一张图
+    showScroll(0);
 }
 //显示相应的轮播图
 function showScroll(i){
@@ -56,10 +60,12 @@ function showScroll(i){
 }
 //自动播放轮播图
 function autoPlayScroll(){
-    if(scrollPage.timer) clearInterval(scrollPage.timer);
-    scrollPage.timer = setInterval(function(){
-        nextScroll();
-    }, scrollPage.interval);
+    if(scrollPage.total != 1){
+        if(scrollPage.timer) clearInterval(scrollPage.timer);
+        scrollPage.timer = setInterval(function(){
+            nextScroll();
+        }, scrollPage.interval);
+    }
 }
 //上一个轮播图
 function prevScroll(){
